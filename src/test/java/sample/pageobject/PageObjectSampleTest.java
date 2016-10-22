@@ -31,7 +31,8 @@ public class PageObjectSampleTest {
 
     @After
     public void tearDown() {
-        driver.quit();
+		//driver.quit();
+		driver.close();
     }
 
     private static Calendar nextSaturday() {
