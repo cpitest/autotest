@@ -67,7 +67,7 @@ public class NWPSWebUITest{
 		// pdfファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\用紙サイズごとのファイル作成中\\A4_50P.pdf");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\A4_50P.pdf");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\A4_50P.pdf");
 		driver.findElement(By.id("ibtnUpload")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー3_PDFの登録ダイアログ（フィット）.jpg");
 
@@ -104,7 +104,7 @@ public class NWPSWebUITest{
 		// pptxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\dog-pptxP3 50.pptx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\dog-pptxP3 50.pptx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\dog-pptxP3 50.pptx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー7_pptxの登録ダイアログ.jpg");
 		// ここからpptxファイルの設定
@@ -133,7 +133,7 @@ public class NWPSWebUITest{
 		// docxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\ページ順確認[50P].docx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\ページ順確認[50P].docx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ページ順確認[50P].docx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー8_docxの登録ダイアログ.jpg");
 		// ここからdocxファイルの設定
@@ -156,7 +156,7 @@ public class NWPSWebUITest{
 		// xlsxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\用紙サイズごとのファイル作成中\\B5_50P(全シート用_1シート10P).xlsx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\B5_50P(全シート用_1シート10P).xlsx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\B5_50P(全シート用_1シート10P).xlsx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		driver.findElement(By.id("Img12")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー9_登録ダイアログのキャンセル押下後.jpg");
@@ -201,7 +201,7 @@ public class NWPSWebUITest{
 		// ↓jpgファイルを登録
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.jpg");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\image1.jpg");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image1.jpg");
 		driver.findElement(By.id("ibtnUpload")).click();
 		for(int second = 0;; second++){
 			if(second >= 60)
@@ -220,7 +220,7 @@ public class NWPSWebUITest{
 		// ↓jpegファイルを登録
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4101.jpeg");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\image2.jpeg");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image2.jpeg");
 		driver.findElement(By.id("ibtnUpload")).click();
 		for(int second = 0;; second++){
 			if(second >= 60)
@@ -237,7 +237,7 @@ public class NWPSWebUITest{
 		// ↓pngファイルを登録
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.png");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\sbc\\Desktop\\ファイル\\image3.png");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image3.png");
 		driver.findElement(By.id("ibtnUpload")).click();
 		for(int second = 0;; second++){
 			if(second >= 60)
