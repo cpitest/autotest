@@ -19,8 +19,9 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 public class NWPSWebUITest{
@@ -30,13 +31,13 @@ public class NWPSWebUITest{
 
 	@Before
 	public void setUp() throws Exception{
-		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		driver = new ChromeDriver();
+		// System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		// driver = new ChromeDriver();
 
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		// capabilities.setCapability("marionette", true);
-		// driver = new FirefoxDriver(capabilities);
+		System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		capabilities.setCapability("marionette", true);
+		driver = new FirefoxDriver(capabilities);
 
 		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
