@@ -54,6 +54,7 @@ public class NWPSWebUITest{
 		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
 	}
 
+	@Test
 	public void 文書登録フロー() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.id("Img6")).click();
@@ -103,7 +104,7 @@ public class NWPSWebUITest{
 		// pptxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\dog-pptxP3 50.pptx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\dog-pptxP3 50.pptx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\dog-pptxP3 50.pptx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー7_pptxの登録ダイアログ.jpg");
 		// ここからpptxファイルの設定
@@ -132,7 +133,7 @@ public class NWPSWebUITest{
 		// docxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\ページ順確認[50P].docx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ページ順確認[50P].docx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\ページ順確認[50P].docx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー8_docxの登録ダイアログ.jpg");
 		// ここからdocxファイルの設定
@@ -155,7 +156,7 @@ public class NWPSWebUITest{
 		// xlsxファイルを指定
 		driver.findElement(By.id("FileUpload")).clear();
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\用紙サイズごとのファイル作成中\\B5_50P(全シート用_1シート10P).xlsx");
-		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\B5_50P(全シート用_1シート10P).xlsx");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\B5_50P(全シート用_1シート10P).xlsx");
 		driver.findElement(By.id("ibtnUpload")).click();
 		driver.findElement(By.id("Img12")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー9_登録ダイアログのキャンセル押下後.jpg");
