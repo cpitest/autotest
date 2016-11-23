@@ -249,8 +249,8 @@ public class NWPSWebUITest{
 
 	@After
 	public void tearDown() throws Exception{
-		// driver.quit();
-		driver.close();
+		driver.quit();
+		// driver.close();
 		String verificationErrorString = verificationErrors.toString();
 		if(!"".equals(verificationErrorString)){
 			fail(verificationErrorString);
@@ -258,7 +258,7 @@ public class NWPSWebUITest{
 	}
 
 	public void takesScreenshot(String path) throws WebDriverException, IOException, InterruptedException{
-		// Thread.sleep(3000);
+		Thread.sleep(3000);
 		//
 		// TakesScreenshot ts = (TakesScreenshot)new Augmenter().augment(driver);
 		//
