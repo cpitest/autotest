@@ -9,8 +9,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 import sample.pageobject.pages.ReserveConfirmPage;
 import sample.pageobject.pages.ReserveErrorPage;
@@ -21,12 +20,12 @@ public class PageObjectSampleTest{
 
 	@Before
 	public void setUp(){
-		System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		capabilities.setCapability("marionette", true);
-		driver = new FirefoxDriver(capabilities);
-		// System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// driver = new ChromeDriver();
+		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
+		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		// capabilities.setCapability("marionette", true);
+		// driver = new FirefoxDriver(capabilities);
+		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
+		driver = new ChromeDriver();
 
 	}
 
