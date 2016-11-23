@@ -3,6 +3,7 @@ package sample.pageobject;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -30,10 +31,10 @@ public class NWPSWebUITest{
 		driver = new FirefoxDriver(capabilities);
 
 		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// ログイン
-		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
+		// driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		// driver.findElement(By.id("txtId")).clear();
 		// driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
 		// driver.findElement(By.id("txtPw")).clear();
