@@ -34,7 +34,7 @@ public class NWPSWebUITest{
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// ログイン
-		// driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
+		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		// driver.findElement(By.id("txtId")).clear();
 		// driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
 		// driver.findElement(By.id("txtPw")).clear();
