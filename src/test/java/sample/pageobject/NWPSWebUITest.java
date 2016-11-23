@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 public class NWPSWebUITest{
@@ -22,8 +23,8 @@ public class NWPSWebUITest{
 		// System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		// driver = new ChromeDriver();
 
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
+		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		// capabilities.setCapability("marionette", true);
 		// driver = new FirefoxDriver(capabilities);
 		//
