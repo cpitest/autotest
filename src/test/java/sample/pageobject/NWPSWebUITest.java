@@ -7,6 +7,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -34,16 +35,16 @@ public class NWPSWebUITest{
 		System.out.println("start NWPS test");
 
 		// ログイン
-		// driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
-		// driver.findElement(By.id("txtId")).clear();
-		// driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
-		// driver.findElement(By.id("txtPw")).clear();
-		// driver.findElement(By.id("txtPw")).sendKeys("2222aaaa");
-		// driver.findElement(By.id("chkSaveId")).click();
-		// driver.findElement(By.id("chkSavePw")).click();
-		// driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
-		// Thread.sleep(3000);
-		// driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
+		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
+		driver.findElement(By.id("txtId")).clear();
+		driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
+		driver.findElement(By.id("txtPw")).clear();
+		driver.findElement(By.id("txtPw")).sendKeys("2222aaaa");
+		driver.findElement(By.id("chkSaveId")).click();
+		driver.findElement(By.id("chkSavePw")).click();
+		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
+		Thread.sleep(3000);
+		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
 	}
 
 	public void 文書登録フロー() throws Exception{
@@ -181,6 +182,7 @@ public class NWPSWebUITest{
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー11_登録完了ダイアログからマイボックスへ戻る.jpg");
 	}
 
+	@Test
 	public void 画像登録フロー() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.id("Img7")).click();
