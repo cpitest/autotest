@@ -3,7 +3,6 @@ package sample.pageobject;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
-import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
@@ -11,8 +10,6 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.support.ui.Select;
 
 public class NWPSWebUITest{
@@ -25,16 +22,16 @@ public class NWPSWebUITest{
 		// System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
 		// driver = new ChromeDriver();
 
-		System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		capabilities.setCapability("marionette", true);
-		driver = new FirefoxDriver(capabilities);
-
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
+		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
+		// capabilities.setCapability("marionette", true);
+		// driver = new FirefoxDriver(capabilities);
+		//
+		// baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
+		// driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// ログイン
-		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
+		// driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		// driver.findElement(By.id("txtId")).clear();
 		// driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
 		// driver.findElement(By.id("txtPw")).clear();
