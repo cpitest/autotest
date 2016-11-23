@@ -55,7 +55,6 @@ public class NWPSWebUITest{
 		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
 	}
 
-	@Test
 	public void 文書登録フロー() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.id("Img6")).click();
