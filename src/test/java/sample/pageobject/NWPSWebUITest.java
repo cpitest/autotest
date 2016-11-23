@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
@@ -34,7 +33,7 @@ public class NWPSWebUITest{
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 		// ログイン
-		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
+		// driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		// driver.findElement(By.id("txtId")).clear();
 		// driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
 		// driver.findElement(By.id("txtPw")).clear();
@@ -181,70 +180,69 @@ public class NWPSWebUITest{
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー11_登録完了ダイアログからマイボックスへ戻る.jpg");
 	}
 
-	@Test
 	public void 画像登録フロー() throws Exception{
-		// driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
-		// driver.findElement(By.id("Img7")).click();
-		// takesScreenshot("C:\\x\\screenshot\\画像登録フロー1_登録画面.jpg");
-		// driver.findElement(By.id("ImgBkMyBox")).click();
-		// takesScreenshot("C:\\x\\screenshot\\画像登録フロー2_登録画面からマイボックスに戻る.jpg");
-		//
-		// Thread.sleep(3000);
-		// driver.findElement(By.id("Img7")).click();
-		// // ↓jpgファイルを登録
-		// driver.findElement(By.id("FileUpload")).clear();
-		// // driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.jpg");
-		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image1.jpg");
-		// driver.findElement(By.id("ibtnUpload")).click();
-		// for(int second = 0;; second++){
-		// if(second >= 60)
-		// fail("timeout");
-		// try{
-		// if(driver.findElement(By.id("Img12")).isDisplayed())
-		// break;
-		// } catch(Exception e){
-		// }
-		// Thread.sleep(1000);
-		// }
-		//
-		// takesScreenshot("C:\\x\\screenshot\\画像登録フロー3_登録完了ダイアログ.jpg");
-		// driver.findElement(By.id("Img12")).click();
-		// takesScreenshot("C:\\x\\screenshot\\画像登録フロー4_続けてプリント押下後.jpg");
-		// // ↓jpegファイルを登録
-		// driver.findElement(By.id("FileUpload")).clear();
-		// // driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4101.jpeg");
-		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image2.jpeg");
-		// driver.findElement(By.id("ibtnUpload")).click();
-		// for(int second = 0;; second++){
-		// if(second >= 60)
-		// fail("timeout");
-		// try{
-		// if(driver.findElement(By.id("Img12")).isDisplayed())
-		// break;
-		// } catch(Exception e){
-		// }
-		// Thread.sleep(1000);
-		// }
-		//
-		// driver.findElement(By.id("Img12")).click();
-		// // ↓pngファイルを登録
-		// driver.findElement(By.id("FileUpload")).clear();
-		// // driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.png");
-		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image3.png");
-		// driver.findElement(By.id("ibtnUpload")).click();
-		// for(int second = 0;; second++){
-		// if(second >= 60)
-		// fail("timeout");
-		// try{
-		// if(driver.findElement(By.id("ImgFinishJavaScript")).isDisplayed())
-		// break;
-		// } catch(Exception e){
-		// }
-		// Thread.sleep(1000);
-		// }
-		//
-		// driver.findElement(By.id("ImgFinishJavaScript")).click();
-		// takesScreenshot("C:\\x\\screenshot\\画像登録フロー5_登録完了ダイアログからマイボックスに戻る.jpg");
+		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
+		driver.findElement(By.id("Img7")).click();
+		takesScreenshot("C:\\x\\screenshot\\画像登録フロー1_登録画面.jpg");
+		driver.findElement(By.id("ImgBkMyBox")).click();
+		takesScreenshot("C:\\x\\screenshot\\画像登録フロー2_登録画面からマイボックスに戻る.jpg");
+
+		Thread.sleep(3000);
+		driver.findElement(By.id("Img7")).click();
+		// ↓jpgファイルを登録
+		driver.findElement(By.id("FileUpload")).clear();
+		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.jpg");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image1.jpg");
+		driver.findElement(By.id("ibtnUpload")).click();
+		for(int second = 0;; second++){
+			if(second >= 60)
+				fail("timeout");
+			try{
+				if(driver.findElement(By.id("Img12")).isDisplayed())
+					break;
+			} catch(Exception e){
+			}
+			Thread.sleep(1000);
+		}
+
+		takesScreenshot("C:\\x\\screenshot\\画像登録フロー3_登録完了ダイアログ.jpg");
+		driver.findElement(By.id("Img12")).click();
+		takesScreenshot("C:\\x\\screenshot\\画像登録フロー4_続けてプリント押下後.jpg");
+		// ↓jpegファイルを登録
+		driver.findElement(By.id("FileUpload")).clear();
+		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4101.jpeg");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image2.jpeg");
+		driver.findElement(By.id("ibtnUpload")).click();
+		for(int second = 0;; second++){
+			if(second >= 60)
+				fail("timeout");
+			try{
+				if(driver.findElement(By.id("Img12")).isDisplayed())
+					break;
+			} catch(Exception e){
+			}
+			Thread.sleep(1000);
+		}
+
+		driver.findElement(By.id("Img12")).click();
+		// ↓pngファイルを登録
+		driver.findElement(By.id("FileUpload")).clear();
+		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\6200x4100.png");
+		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\image3.png");
+		driver.findElement(By.id("ibtnUpload")).click();
+		for(int second = 0;; second++){
+			if(second >= 60)
+				fail("timeout");
+			try{
+				if(driver.findElement(By.id("ImgFinishJavaScript")).isDisplayed())
+					break;
+			} catch(Exception e){
+			}
+			Thread.sleep(1000);
+		}
+
+		driver.findElement(By.id("ImgFinishJavaScript")).click();
+		takesScreenshot("C:\\x\\screenshot\\画像登録フロー5_登録完了ダイアログからマイボックスに戻る.jpg");
 	}
 
 	@After
