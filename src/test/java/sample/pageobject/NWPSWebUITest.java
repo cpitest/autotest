@@ -248,7 +248,7 @@ public class NWPSWebUITest{
 	@After
 	public void tearDown() throws Exception{
 		try{
-			driver.quit();
+			// driver.quit();
 			// driver.close();
 		} catch(Exception e){
 		}
