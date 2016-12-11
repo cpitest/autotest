@@ -19,11 +19,12 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriverException;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.remote.Augmenter;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import selenium.WebDriverWrapper;
 
 public class NWPSWebUITest{
 	private WebDriver driver;
@@ -35,11 +36,11 @@ public class NWPSWebUITest{
 	@Before
 	public void setUp() throws Exception{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		driver = new ChromeDriver();
-		// driver = new WebDriverWrapper("chrome");
-		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		// driver = new ChromeDriver();
+		driver = new WebDriverWrapper("chrome");
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		waitForPopUp = new WebDriverWait(driver, 10);
+		waitForPopUp = new WebDriverWait(driver, 600);
 		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
 		// capabilities.setCapability("marionette", true);
@@ -58,8 +59,8 @@ public class NWPSWebUITest{
 		driver.findElement(By.id("chkSaveId")).click();
 		driver.findElement(By.id("chkSavePw")).click();
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("img[alt=\"閉じる\"]")));
 		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
-
 	}
 
 	@Test
@@ -136,6 +137,7 @@ public class NWPSWebUITest{
 		// driver.findElement(By.id("FileUpload")).sendKeys("C:\\Users\\lx12080225\\Desktop\\ファイル\\用紙サイズごとのファイル作成中\\B5_50P(全シート用_1シート10P).xlsx");
 		driver.findElement(By.id("FileUpload")).sendKeys("C:\\x\\ファイル\\B5_50P(全シート用_1シート10P).xlsx");
 		driver.findElement(By.id("ibtnUpload")).click();
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.id("Img12")));
 		driver.findElement(By.id("Img12")).click();
 		takesScreenshot("C:\\x\\screenshot\\文書登録フロー9_登録ダイアログのキャンセル押下後.jpg");
 		driver.findElement(By.id("ibtnUpload")).click();
@@ -193,6 +195,60 @@ public class NWPSWebUITest{
 		takesScreenshot("C:\\x\\screenshot\\画像登録フロー5_登録完了ダイアログからマイボックスに戻る.jpg");
 	}
 
+	@Test
+	public void 文書のデータ詳細確認() throws Exception{
+		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
+		driver.findElement(By.xpath("(//img[@alt='詳細'])[4]")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認1_文書の詳細画面.jpg");
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.id("ibtnChgDocumentName")));
+		driver.findElement(By.id("ibtnChgDocumentName")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認2_登録ダイアログ.jpg");
+		// ここからpdf変更内容
+		driver.findElement(By.id("txtIptDataName")).clear();
+		driver.findElement(By.id("txtIptDataName")).sendKeys("B");
+		new Select(driver.findElement(By.id("ddlIptPaperSize"))).selectByVisibleText("A4");
+		driver.findElement(By.id("rbIptPrintPageAll")).click();
+		new Select(driver.findElement(By.id("ddlIptFitToPage"))).selectByVisibleText("用紙に合わせて印刷");
+		// ここまでpdf変更内容
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認4_登録ダイアログで設定内容入力後.jpg");
+		driver.findElement(By.id("modal_Upload_img")).click();
+
+		// driver.findElement(By.id("btnChange")).click();
+		// ↓ステータスが「印刷できます」になるまで待機。とりあえずpauseコマンドを使用。
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認5_登録完了かつ展開完了後.jpg");
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.id("ibtnChgPaperSize")));
+		driver.findElement(By.id("ibtnChgPaperSize")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認6_用紙サイズの変更押下.jpg");
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.id("Img12")));
+		driver.findElement(By.id("Img12")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認7_編集ダイアログのキャンセル押下.jpg");
+		driver.findElement(By.id("ibtnChgPrintPage")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認8_ページ指定の変更押下.jpg");
+		waitForPopUp.until(ExpectedConditions.visibilityOfElementLocated(By.id("Img12")));
+		driver.findElement(By.id("Img12")).click();
+		// ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null");
+		driver.findElement(By.id("imgPage1")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認9_1ページ目のプレビュー表示.jpg");
+		driver.findElement(By.id("cboxClose")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認10_プレビューの閉じる押下.jpg");
+
+		// 押せないので除外
+		// driver.findElement(By.id("imgPage1")).click();
+		// driver.findElement(By.id("cboxOverlay")).click();
+
+		driver.findElement(By.id("WebPageTop_lbtn_5")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認11_ページ5に遷移.jpg");
+		driver.findElement(By.id("imgPage41")).click();
+
+		// 押せないので除外して、代わりにクローズボタン押下
+		// driver.findElement(By.id("cboxOverlay")).click();
+		driver.findElement(By.id("cboxClose")).click();
+
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認12_プレビューの枠外押下.jpg");
+		driver.findElement(By.id("ImgBkMyBox")).click();
+		takesScreenshot("C:\\x\\screenshot\\文書のデータ詳細確認13_編集画面からマイボックスに戻る.jpg");
+	}
+
 	@After
 	public void tearDown() throws Exception{
 		try{
@@ -209,6 +265,7 @@ public class NWPSWebUITest{
 	}
 
 	public void takesScreenshot(String path) throws WebDriverException, IOException, InterruptedException{
+
 		TakesScreenshot ts = (TakesScreenshot)new Augmenter().augment(driver);
 
 		// JS実行用のExecuter
