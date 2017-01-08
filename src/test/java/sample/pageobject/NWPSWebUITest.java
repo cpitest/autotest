@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,7 +52,7 @@ public class NWPSWebUITest{
 		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
 	}
 
-	@Test
+	// @Test
 	public void 文書登録フロー() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.id("Img6")).click();
@@ -151,7 +150,7 @@ public class NWPSWebUITest{
 		TestUtil.takesScreenshot(driver, "文書登録フロー11_登録完了ダイアログからマイボックスへ戻る.jpg");
 	}
 
-	@Test
+	// @Test
 	public void 画像登録フロー() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.id("Img7")).click();
@@ -185,7 +184,7 @@ public class NWPSWebUITest{
 		TestUtil.takesScreenshot(driver, "画像登録フロー5_登録完了ダイアログからマイボックスに戻る.jpg");
 	}
 
-	@Test
+	// @Test
 	public void 文書のデータ詳細確認() throws Exception{
 		driver.get(baseUrl + "/sharp_netprint/ja/mypage.aspx");
 		driver.findElement(By.xpath("(//img[@alt='詳細'])[4]")).click();
