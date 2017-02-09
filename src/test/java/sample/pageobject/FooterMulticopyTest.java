@@ -77,6 +77,8 @@ public class FooterMulticopyTest{
 		assertEquals("http://www.sharp.co.jp/multicopy/", driver.getCurrentUrl());
 		TestUtil.takesScreenshot(driver, "multicopy_1.png");
 
+		// テスト追加
+
 		// 開いたウィンドウを閉じる
 		driver.close();
 
