@@ -10,9 +10,12 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.sahagin.runlib.external.PageDoc;
+import org.sahagin.runlib.external.TestDoc;
 
 import selenium.WebDriverWrapper;
 
+@PageDoc("forBizログインページ")
 public class LoginTest{
 	private WebDriver driver;
 	private String baseUrl;
@@ -26,7 +29,6 @@ public class LoginTest{
 		// driver = new ChromeDriver();
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		waitForPopUp = new WebDriverWait(driver, 120);
 		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
 		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
@@ -39,12 +41,16 @@ public class LoginTest{
 
 	@Test
 	public void ログイン成功確認() throws Exception{
-		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime2@sharp.co.jp");
-		driver.findElement(By.id("txtPw")).clear();
-		driver.findElement(By.id("txtPw")).sendKeys("1111aaaa");
+		setTextById("txtId", "nakamura.hajime2@sharp.co.jp");
+		setTextById("txtPw", "1111aaaa");
 		driver.findElement(By.id("doLogin")).click();
-		assertTrue(driver.getCurrentUrl().contains("https://cvs.so.sh.airfolc.co.jp/forBiz/view/main/status.html"));
+		assertTrue("ログイン後のページに遷移できているかチェック", driver.getCurrentUrl().contains("https://cvs.so.sh.airfolc.co.jp/forBiz/view/main/status.html"));
+	}
+
+	@TestDoc("「id = {id}」の要素に「{text}」をセット")
+	public void setTextById(String id, String text){
+		driver.findElement(By.id(id)).clear();
+		driver.findElement(By.id(id)).sendKeys(text);
 	}
 
 	@After

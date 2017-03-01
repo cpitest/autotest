@@ -7,6 +7,11 @@
  * user guide available at https://docs.gradle.org/2.14.1/userguide/tutorial_java_projects.html
  */
 
+// バージョン番号は、その時の最新を指定
+def sahaginVersion = '0.9.2'
+
+
+
 // Apply the java plugin to add support for Java
 apply plugin: 'java'
 
@@ -28,6 +33,11 @@ dependencies {
     // testCompile dependency to testCompile 'org.testng:testng:6.8.1' and add
     // 'test.useTestNG()' to your build script.
     testCompile 'junit:junit:4.12'
+
+    // for sahagin
+    compile 'org.sahagin:sahagin:' + sahaginVersion
+
+
 }
 
 // ↓ここからが文字エンコーディング指定
@@ -41,4 +51,14 @@ compileJava {
 compileTestJava {
     options.encoding = defaultEncoding  // src/test/java配下の*.javaに影響
                                         // JAVA_OPTS=-Dfile.encoding で代替可能
+}
+
+test {
+	doFirst {
+		// ローカルキャッシュからsahaginのJarファイルを検索
+		def sahaginJar = project.configurations.testCompile.find {
+				it.name == 'sahagin-' + sahaginVersion + '.jar'
+		}
+		jvmArgs '-javaagent:' + sahaginJar
+	}
 }
