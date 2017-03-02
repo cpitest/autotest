@@ -29,7 +29,7 @@ public class TopsFooterPrivacyPolicyTest{
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
+		baseUrl = TestUtil.BASE_URL;
 	}
 
 	@Test
@@ -47,7 +47,6 @@ public class TopsFooterPrivacyPolicyTest{
 		TestUtil.takesScreenshot(driver, "kojinzyouhouhogo1.png");
 		driver.close();
 		driver.switchTo().window(current_window_id);
-
 	}
 
 	@After
@@ -58,5 +57,4 @@ public class TopsFooterPrivacyPolicyTest{
 			fail(verificationErrorString);
 		}
 	}
-
 }

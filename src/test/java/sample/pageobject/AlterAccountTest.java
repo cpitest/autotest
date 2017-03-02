@@ -24,19 +24,10 @@ public class AlterAccountTest{
 	@Before
 	public void setUp() throws Exception{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// driver = new ChromeDriver();
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		waitForPopUp = new WebDriverWait(driver, 600);
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		// capabilities.setCapability("marionette", true);
-		// driver = new FirefoxDriver(capabilities);
-
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-
-		System.out.println("start NWPS test");
+		baseUrl = TestUtil.BASE_URL;
 	}
 
 	@Test
@@ -45,9 +36,9 @@ public class AlterAccountTest{
 		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		assertEquals("ネットワークプリント｜パソコン・スマホから登録、コンビニで印刷", driver.getTitle());
 		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("testselenium147258369@gmail.com");
+		driver.findElement(By.id("txtId")).sendKeys(TestUtil.USER_ID);
 		driver.findElement(By.id("txtPw")).clear();
-		driver.findElement(By.id("txtPw")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtPw")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
 		assertEquals("ネットワークプリントサービス", driver.getTitle());
 		// POPUP閉じる
@@ -75,7 +66,7 @@ public class AlterAccountTest{
 		driver.findElement(By.id("rbSendNotify2")).click();
 		driver.findElement(By.id("chkReferenceDisable")).click();
 		driver.findElement(By.id("txtOldPswd")).clear();
-		driver.findElement(By.id("txtOldPswd")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtOldPswd")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.id("txtNewPswd")).clear();
 		driver.findElement(By.id("txtNewPswd")).sendKeys("sele1234");
 		driver.findElement(By.id("txtConfirmPswd")).clear();
@@ -128,7 +119,7 @@ public class AlterAccountTest{
 		driver.findElement(By.id("rbSendNotify2")).click();
 		driver.findElement(By.id("chkReferenceDisable")).click();
 		driver.findElement(By.id("txtOldPswd")).clear();
-		driver.findElement(By.id("txtOldPswd")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtOldPswd")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.id("txtNewPswd")).clear();
 		driver.findElement(By.id("txtNewPswd")).sendKeys("sele1234");
 		driver.findElement(By.id("txtConfirmPswd")).clear();
@@ -155,9 +146,9 @@ public class AlterAccountTest{
 		assertEquals("ネットワークプリント｜パソコン・スマホから登録、コンビニで印刷", driver.getTitle());
 		// 変更前のID、パスワードでログインできない事を確認
 		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("testselenium147258369@gmail.com");
+		driver.findElement(By.id("txtId")).sendKeys(TestUtil.USER_ID);
 		driver.findElement(By.id("txtPw")).clear();
-		driver.findElement(By.id("txtPw")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtPw")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
 		try{
 			assertTrue(driver.findElement(By.cssSelector("#cboxLoadedContent > div")).getText().matches("^ログインに失敗しました[\\s\\S]*$"));
@@ -169,7 +160,7 @@ public class AlterAccountTest{
 		driver.findElement(By.id("cboxClose")).click();
 		// 変更後のID、パスワードでログインできる事を確認
 		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("testselenium147258369@gmail.com");
+		driver.findElement(By.id("txtId")).sendKeys(TestUtil.USER_ID);
 		driver.findElement(By.id("txtPw")).clear();
 		driver.findElement(By.id("txtPw")).sendKeys("sele1234");
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
@@ -187,9 +178,9 @@ public class AlterAccountTest{
 		driver.findElement(By.id("txtOldPswd")).clear();
 		driver.findElement(By.id("txtOldPswd")).sendKeys("sele1234");
 		driver.findElement(By.id("txtNewPswd")).clear();
-		driver.findElement(By.id("txtNewPswd")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtNewPswd")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.id("txtConfirmPswd")).clear();
-		driver.findElement(By.id("txtConfirmPswd")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtConfirmPswd")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.id("chk_mm_event")).click();
 		driver.findElement(By.id("ibtn_alteration")).click();
 		driver.findElement(By.cssSelector("img[alt=\"変更する\"]")).click();
@@ -214,7 +205,6 @@ public class AlterAccountTest{
 	@After
 	public void tearDown() throws Exception{
 		try{
-			System.out.println("start NWPS end1");
 			// driver.quit();
 			driver.close();
 		} catch(Exception e){
@@ -223,6 +213,5 @@ public class AlterAccountTest{
 		if(!"".equals(verificationErrorString)){
 			fail(verificationErrorString);
 		}
-		System.out.println("start NWPS end2");
 	}
 }

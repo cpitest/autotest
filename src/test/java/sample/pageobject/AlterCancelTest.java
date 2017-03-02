@@ -25,19 +25,10 @@ public class AlterCancelTest{
 	@Before
 	public void setUp() throws Exception{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// driver = new ChromeDriver();
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		waitForPopUp = new WebDriverWait(driver, 600);
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		// capabilities.setCapability("marionette", true);
-		// driver = new FirefoxDriver(capabilities);
-
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-
-		System.out.println("start NWPS test");
+		baseUrl = TestUtil.BASE_URL;
 
 		// ログインする
 		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
@@ -89,7 +80,6 @@ public class AlterCancelTest{
 	@After
 	public void tearDown() throws Exception{
 		try{
-			System.out.println("start NWPS end1");
 			// driver.quit();
 			driver.close();
 		} catch(Exception e){
@@ -98,6 +88,5 @@ public class AlterCancelTest{
 		if(!"".equals(verificationErrorString)){
 			fail(verificationErrorString);
 		}
-		System.out.println("start NWPS end2");
 	}
 }

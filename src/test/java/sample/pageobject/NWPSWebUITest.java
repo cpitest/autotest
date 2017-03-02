@@ -26,26 +26,17 @@ public class NWPSWebUITest{
 	@Before
 	public void setUp() throws Exception{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// driver = new ChromeDriver();
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		waitForPopUp = new WebDriverWait(driver, 120);
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		// capabilities.setCapability("marionette", true);
-		// driver = new FirefoxDriver(capabilities);
-
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-
-		System.out.println("start NWPS test");
+		baseUrl = TestUtil.BASE_URL;
 
 		// ログイン
 		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("nakamura.hajime@sharp.co.jp");
+		driver.findElement(By.id("txtId")).sendKeys(TestUtil.USER_ID);
 		driver.findElement(By.id("txtPw")).clear();
-		driver.findElement(By.id("txtPw")).sendKeys("1111aaaa");
+		driver.findElement(By.id("txtPw")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.id("chkSaveId")).click();
 		driver.findElement(By.id("chkSavePw")).click();
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
@@ -205,7 +196,6 @@ public class NWPSWebUITest{
 
 		// driver.findElement(By.id("btnChange")).click();
 		// ↓ステータスが「印刷できます」になるまで待機。とりあえずpauseコマンドを使用。
-
 		TestUtil.takesScreenshot(driver, "文書のデータ詳細確認5_登録完了かつ展開完了後.jpg");
 		waitForPopUp.until(ExpectedConditions.textToBe(By.id("lblStatus"), "印刷できます"));
 
@@ -228,7 +218,6 @@ public class NWPSWebUITest{
 		// 押せないので除外
 		// driver.findElement(By.id("imgPage1")).click();
 		// driver.findElement(By.id("cboxOverlay")).click();
-
 		driver.findElement(By.id("WebPageTop_lbtn_5")).click();
 		TestUtil.takesScreenshot(driver, "文書のデータ詳細確認11_ページ5に遷移.jpg");
 		driver.findElement(By.id("imgPage41")).click();
@@ -245,7 +234,6 @@ public class NWPSWebUITest{
 	@After
 	public void tearDown() throws Exception{
 		try{
-			System.out.println("start NWPS end1");
 			// driver.quit();
 			driver.close();
 		} catch(Exception e){
@@ -254,6 +242,5 @@ public class NWPSWebUITest{
 		if(!"".equals(verificationErrorString)){
 			fail(verificationErrorString);
 		}
-		System.out.println("start NWPS end2");
 	}
 }

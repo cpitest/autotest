@@ -27,7 +27,7 @@ public class TopsHeaderSearchStoreTest{
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
+		baseUrl = TestUtil.BASE_URL;
 	}
 
 	@Test

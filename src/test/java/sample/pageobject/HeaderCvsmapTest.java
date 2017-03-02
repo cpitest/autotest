@@ -24,27 +24,18 @@ public class HeaderCvsmapTest{
 	@Before
 	public void setUp() throws Exception{
 		System.setProperty("webdriver.chrome.driver", "./driver/chromedriver.exe");
-		// driver = new ChromeDriver();
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-
 		waitForPopUp = new WebDriverWait(driver, 600);
-		// System.setProperty("webdriver.gecko.driver", "./driver/geckodriver.exe");
-		// DesiredCapabilities capabilities = DesiredCapabilities.firefox();
-		// capabilities.setCapability("marionette", true);
-		// driver = new FirefoxDriver(capabilities);
-
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
-
-		System.out.println("start NWPS test");
+		baseUrl = TestUtil.BASE_URL;
 
 		// ログインする
 		driver.get(baseUrl + "/sharp_netprint/ja/top.aspx");
 		assertEquals("ネットワークプリント｜パソコン・スマホから登録、コンビニで印刷", driver.getTitle());
 		driver.findElement(By.id("txtId")).clear();
-		driver.findElement(By.id("txtId")).sendKeys("testselenium147258369@gmail.com");
+		driver.findElement(By.id("txtId")).sendKeys(TestUtil.USER_ID);
 		driver.findElement(By.id("txtPw")).clear();
-		driver.findElement(By.id("txtPw")).sendKeys("abcd1234");
+		driver.findElement(By.id("txtPw")).sendKeys(TestUtil.USER_PASSWORD);
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
 		assertEquals("ネットワークプリントサービス", driver.getTitle());
 		// POPUP閉じる
@@ -60,7 +51,6 @@ public class HeaderCvsmapTest{
 		}
 
 		driver.findElement(By.cssSelector("img[alt=\"閉じる\"]")).click();
-
 	}
 
 	@Test
@@ -85,7 +75,6 @@ public class HeaderCvsmapTest{
 	@After
 	public void tearDown() throws Exception{
 		try{
-			System.out.println("start NWPS end1");
 			// driver.quit();
 			driver.close();
 		} catch(Exception e){
@@ -94,6 +83,5 @@ public class HeaderCvsmapTest{
 		if(!"".equals(verificationErrorString)){
 			fail(verificationErrorString);
 		}
-		System.out.println("start NWPS end2");
 	}
 }

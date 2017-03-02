@@ -28,7 +28,7 @@ public class TopsHeaderConveniIconTest{
 		driver = new WebDriverWrapper("chrome");
 		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-		baseUrl = "https://cvs.so.sh.airfolc.co.jp/";
+		baseUrl = TestUtil.BASE_URL;
 	}
 
 	@Test
@@ -66,7 +66,7 @@ public class TopsHeaderConveniIconTest{
 		// ファミリーマートをクリック
 		driver.findElement(By.xpath("//img[@alt='ファミリーマート']")).click();
 		TestUtil.focusByNewWindow(driver, current_window_id);
-		assertEquals("https://www.family.co.jp/", driver.getCurrentUrl());
+		assertEquals("http://www.family.co.jp/", driver.getCurrentUrl());
 		TestUtil.takesScreenshot(driver, "convini_4.png");
 		// ページを閉じる
 		driver.close();
