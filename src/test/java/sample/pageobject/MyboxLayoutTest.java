@@ -1,5 +1,6 @@
 package sample.pageobject;
 
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 import java.util.concurrent.TimeUnit;
@@ -55,7 +56,7 @@ public class MyboxLayoutTest{
 		driver.findElement(By.id("txtPw")).sendKeys(txtPw);
 		driver.findElement(By.cssSelector("img[alt=\"ログイン\"]")).click();
 		// 遷移先の判定
-		assertEquals("https://cvs.so.sh.airfolc.co.jp/sharp_netprint/ja/mypage.aspx", driver.getCurrentUrl());
+		assertEquals(baseUrl + "sharp_netprint/ja/mypage.aspx", driver.getCurrentUrl());
 		// POPUP閉じる
 		for(int second = 0;; second++){
 			if(second >= 60)
@@ -73,6 +74,7 @@ public class MyboxLayoutTest{
 		assertEquals(Usable1, driver.findElement(By.id("lblUsableSpace")).getText());
 		// マイボックスのレイアウト確認の為キャプチャを取得
 		// ERROR: Caught exception [ERROR: Unsupported command [captureEntirePageScreenshot | C:\x\screenshot\${cap1}.png | ]]
+		TestUtil.takesScreenshot(driver, cap1 + ".png");
 		// 画像を登録するクリック
 		driver.findElement(By.id("Img7")).click();
 		// 画像ファイル登録1を登録
@@ -186,7 +188,7 @@ public class MyboxLayoutTest{
 
 		driver.findElement(By.id("Img15")).click();
 		// リスト最上部の登録名を判定(削除されている事)
-		// assertThat("dog-jpg3.jpg", is(not(driver.findElement(By.cssSelector("td.ListD > span")).getText())));
+		assertThat("dog-jpg3.jpg", is(not(driver.findElement(By.cssSelector("td.ListD > span")).getText())));
 		// リスト最上部の登録名を判定(2番目のファイルがシフトしている事)
 		assertEquals("dog-jpg2.jpg", driver.findElement(By.cssSelector("td.ListD > span")).getText());
 		// すべて選択
@@ -207,6 +209,7 @@ public class MyboxLayoutTest{
 		driver.findElement(By.id("Img15")).click();
 		// リストにファイルが無い事の判定
 		// assertFalse(isElementPresent(By.cssSelector("td.ListD > span")));
+		assertEquals("リストにファイルが無い事の判定", 0, driver.findElements(By.cssSelector("td.ListD > span")).size());
 
 		// ログアウトする
 		// ERROR: Caught exception [ERROR: Unsupported command [selectWindow | null | ]]
